@@ -10,16 +10,15 @@
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
+              body { margin:0; padding:0; }
+  #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  #map-title { position: relative; margin-top: 0px; margin-left: 30px; float: left; background: transparent ; border: 0px solid rgba(0,0,0,0.2); padding: 1.5px 2px; font-family: Helvetica; font-weight: bold; font-size: 24px; z-index: 800; }
+  
         </style>
-        <title></title>
+        <title>TrazTru</title>
     </head>
     <body>
+       <div id="map-title"><img src="traztru logo.png" width="100" height="100"></div>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -40,10 +39,11 @@
         <script src="data/GeolocationTZ2400113_6.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[8.583283037716182,98.28544567106483],[9.348175620318917,99.76376908058967]]);
+           map = L.map('map', {
+             zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[14.542817770937596,104.64472668446471],[14.56363761108902,104.6857912236178]]);
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+       map.attributionControl.setPrefix('<a href="https://v2.traztru.com/login" target="_blank">TrazTru</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var measureControl = new L.Control.Measure({
             position: 'topleft',
