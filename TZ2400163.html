@@ -9,17 +9,16 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
+         <style>
+              body { margin:0; padding:0; }
+  #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  #map-title { position: relative; margin-top: 0px; margin-left: 30px; float: left; background: transparent ; border: 0px solid rgba(0,0,0,0.2); padding: 1.5px 2px; font-family: Helvetica; font-weight: bold; font-size: 24px; z-index: 800; }
+  
         </style>
-        <title></title>
+        <title>TrazTru</title>
     </head>
     <body>
+       <div id="map-title"><img src="traztru logo.png" width="100" height="100"></div>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -39,10 +38,10 @@
         <script src="data/TZ2400163_5.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[8.376150711500381,98.78114232284483],[8.41205998151907,98.8504387326661]]);
+             zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[8.583283037716182,98.28544567106483],[9.348175620318917,99.76376908058967]]);
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+       map.attributionControl.setPrefix('<a href="https://v2.traztru.com/login" target="_blank">TrazTru</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var measureControl = new L.Control.Measure({
             position: 'topleft',
@@ -135,14 +134,14 @@
         function style_WildlifeSanctuary_2_0() {
             return {
                 pane: 'pane_WildlifeSanctuary_2',
-                opacity: 1,
+                opacity: 0.5,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 1,
+                fillOpacity: 0.5,
                 fillColor: 'rgba(251,154,153,1.0)',
                 interactive: true,
             }
@@ -209,14 +208,14 @@
         function style_NationalPark_3_0() {
             return {
                 pane: 'pane_NationalPark_3',
-                opacity: 1,
+                opacity: 0.5,
                 color: 'rgba(143,181,131,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 1,
+                fillOpacity: 0.5,
                 fillColor: 'rgba(148,209,128,1.0)',
                 interactive: true,
             }
@@ -283,14 +282,14 @@
         function style_NonHuntingAreas_4_0() {
             return {
                 pane: 'pane_NonHuntingAreas_4',
-                opacity: 1,
+                opacity: 0.5,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 1,
+                fillOpacity: 0.5,
                 fillColor: 'rgba(243,166,178,1.0)',
                 interactive: true,
             }
@@ -507,14 +506,14 @@
         function style_TZ2400163_5_0() {
             return {
                 pane: 'pane_TZ2400163_5',
-                opacity: 1,
+                opacity: 0.5,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 1,
+                fillOpacity: 0.5,
                 fillColor: 'rgba(247,244,50,1.0)',
                 interactive: true,
             }
