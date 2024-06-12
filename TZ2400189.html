@@ -35,7 +35,7 @@
         <script src="data/WildlifeSanctuary_2.js"></script>
         <script src="data/NationalPark_3.js"></script>
         <script src="data/NonHuntingAreas_4.js"></script>
-        <script src="data/POLYGONTZ2400189_5.js"></script>
+        <script src="data/Polygon_TZ2400189_5.js"></script>
         <script>
         var map = L.map('map', {
              zoomControl:true, maxZoom:28, minZoom:1
@@ -501,13 +501,17 @@
                         <td colspan="2"><strong>ปริมาณยากำจัดวัชพิช</strong><br />' + (feature.properties['ปริมาณยากำจัดวัชพิช'] !== null ? autolinker.link(feature.properties['ปริมาณยากำจัดวัชพิช'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-             layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, {maxHeight: 400});
+            var popup = layer.getPopup();
+            var content = popup.getContent();
+            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
+            popup.setContent(updatedContent);
         }
 
-        function style_POLYGONTZ2400189_5_0() {
+        function style_Polygon_TZ2400189_5_0() {
             return {
-                pane: 'pane_POLYGONTZ2400189_5',
-                opacity: 1,
+                pane: 'pane_Polygon_TZ2400189_5',
+                opacity: 0.5,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
@@ -519,19 +523,19 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_POLYGONTZ2400189_5');
-        map.getPane('pane_POLYGONTZ2400189_5').style.zIndex = 405;
-        map.getPane('pane_POLYGONTZ2400189_5').style['mix-blend-mode'] = 'normal';
-        var layer_POLYGONTZ2400189_5 = new L.geoJson(json_POLYGONTZ2400189_5, {
+        map.createPane('pane_Polygon_TZ2400189_5');
+        map.getPane('pane_Polygon_TZ2400189_5').style.zIndex = 405;
+        map.getPane('pane_Polygon_TZ2400189_5').style['mix-blend-mode'] = 'normal';
+        var layer_Polygon_TZ2400189_5 = new L.geoJson(json_Polygon_TZ2400189_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_POLYGONTZ2400189_5',
-            layerName: 'layer_POLYGONTZ2400189_5',
-            pane: 'pane_POLYGONTZ2400189_5',
-            onEachFeature: pop_POLYGONTZ2400189_5,
-            style: style_POLYGONTZ2400189_5_0,
+            dataVar: 'json_Polygon_TZ2400189_5',
+            layerName: 'layer_Polygon_TZ2400189_5',
+            pane: 'pane_Polygon_TZ2400189_5',
+            onEachFeature: pop_Polygon_TZ2400189_5,
+            style: style_Polygon_TZ2400189_5_0,
         });
-       bounds_group.addLayer(layer_Polygon_TZ2400189_5);
+        bounds_group.addLayer(layer_Polygon_TZ2400189_5);
         map.addLayer(layer_Polygon_TZ2400189_5);
         var baseMaps = {};
         L.control.layers(baseMaps,{'<img src="legend/Polygon_TZ2400189_5.png" /> Polygon_TZ2400189': layer_Polygon_TZ2400189_5,'<img src="legend/NonHuntingAreas_4.png" /> Non Hunting Areas': layer_NonHuntingAreas_4,'<img src="legend/NationalPark_3.png" /> National Park': layer_NationalPark_3,'<img src="legend/WildlifeSanctuary_2.png" /> Wildlife Sanctuary': layer_WildlifeSanctuary_2,"Global forest cover 2020": layer_Globalforestcover2020_1,"google map": layer_googlemap_0,}).addTo(map);
