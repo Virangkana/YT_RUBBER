@@ -7,9 +7,7 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
-        <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
-        <link rel="stylesheet" href="css/qgis2web.css">
-        <link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
               body { margin:0; padding:0; }
@@ -25,7 +23,6 @@
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
-        <script src="js/L.Control.Layers.Tree.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -40,19 +37,19 @@
         <script src="data/NonHuntingAreas_4.js"></script>
         <script src="data/POLYGONTZ2400189_5.js"></script>
         <script>
-         var map = L.map('map', {
+        var map = L.map('map', {
              zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[8.583283037716182,98.28544567106483],[9.348175620318917,99.76376908058967]]);
         var hash = new L.Hash(map);
        map.attributionControl.setPrefix('<a href="https://v2.traztru.com/login" target="_blank">TrazTru</a>');
-         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var measureControl = new L.Control.Measure({
             position: 'topleft',
             primaryLengthUnit: 'meters',
             secondaryLengthUnit: 'kilometers',
             primaryAreaUnit: 'sqmeters',
             secondaryAreaUnit: 'hectares'
-         });
+        });
         measureControl.addTo(map);
         document.getElementsByClassName('leaflet-control-measure-toggle')[0]
         .innerHTML = '';
@@ -132,16 +129,12 @@
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
         }
 
         function style_WildlifeSanctuary_2_0() {
             return {
                 pane: 'pane_WildlifeSanctuary_2',
-                opacity: 1,
+                opacity: 0.5,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
@@ -210,16 +203,12 @@
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
         }
 
         function style_NationalPark_3_0() {
             return {
                 pane: 'pane_NationalPark_3',
-                opacity: 1,
+                opacity: 0.5,
                 color: 'rgba(143,181,131,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
@@ -288,16 +277,12 @@
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
         }
 
         function style_NonHuntingAreas_4_0() {
             return {
                 pane: 'pane_NonHuntingAreas_4',
-                opacity: 1,
+                opacity: 0.5,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
@@ -516,11 +501,7 @@
                         <td colspan="2"><strong>ปริมาณยากำจัดวัชพิช</strong><br />' + (feature.properties['ปริมาณยากำจัดวัชพิช'] !== null ? autolinker.link(feature.properties['ปริมาณยากำจัดวัชพิช'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
+             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_POLYGONTZ2400189_5_0() {
@@ -553,7 +534,7 @@
        bounds_group.addLayer(layer_Polygon_TZ2400189_5);
         map.addLayer(layer_Polygon_TZ2400189_5);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Polygon_TZ2400189_5.png" /> Polygon_TZ2400162': layer_Polygon_TZ2400189_5,'<img src="legend/NonHuntingAreas_4.png" /> Non Hunting Areas': layer_NonHuntingAreas_4,'<img src="legend/NationalPark_3.png" /> National Park': layer_NationalPark_3,'<img src="legend/WildlifeSanctuary_2.png" /> Wildlife Sanctuary': layer_WildlifeSanctuary_2,"Global forest cover 2020": layer_Globalforestcover2020_1,"google map": layer_googlemap_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Polygon_TZ2400189_5.png" /> Polygon_TZ2400189': layer_Polygon_TZ2400189_5,'<img src="legend/NonHuntingAreas_4.png" /> Non Hunting Areas': layer_NonHuntingAreas_4,'<img src="legend/NationalPark_3.png" /> National Park': layer_NationalPark_3,'<img src="legend/WildlifeSanctuary_2.png" /> Wildlife Sanctuary': layer_WildlifeSanctuary_2,"Global forest cover 2020": layer_Globalforestcover2020_1,"google map": layer_googlemap_0,}).addTo(map);
         setBounds();
         </script>
     </body>
