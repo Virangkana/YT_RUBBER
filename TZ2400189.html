@@ -45,36 +45,14 @@
         }).fitBounds([[8.583283037716182,98.28544567106483],[9.348175620318917,99.76376908058967]]);
         var hash = new L.Hash(map);
        map.attributionControl.setPrefix('<a href="https://v2.traztru.com/login" target="_blank">TrazTru</a>');
-        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        function removeEmptyRowsFromPopupContent(content, feature) {
-         var tempDiv = document.createElement('div');
-         tempDiv.innerHTML = content;
-         var rows = tempDiv.querySelectorAll('tr');
-         for (var i = 0; i < rows.length; i++) {
-             var td = rows[i].querySelector('td.visible-with-data');
-             var key = td ? td.id : '';
-             if (td && td.classList.contains('visible-with-data') && feature.properties[key] == null) {
-                 rows[i].parentNode.removeChild(rows[i]);
-             }
-         }
-         return tempDiv.innerHTML;
-        }
-        document.querySelector(".leaflet-popup-pane").addEventListener("load", function(event) {
-          var tagName = event.target.tagName,
-            popup = map._popup;
-          // Also check if flag is already set.
-          if (tagName === "IMG" && popup && !popup._updated) {
-            popup._updated = true; // Set flag to prevent looping.
-            popup.update();
-          }
-        }, true);
+         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var measureControl = new L.Control.Measure({
             position: 'topleft',
             primaryLengthUnit: 'meters',
             secondaryLengthUnit: 'kilometers',
             primaryAreaUnit: 'sqmeters',
             secondaryAreaUnit: 'hectares'
-        });
+         });
         measureControl.addTo(map);
         document.getElementsByClassName('leaflet-control-measure-toggle')[0]
         .innerHTML = '';
@@ -572,26 +550,10 @@
             onEachFeature: pop_POLYGONTZ2400189_5,
             style: style_POLYGONTZ2400189_5_0,
         });
-        bounds_group.addLayer(layer_POLYGONTZ2400189_5);
-        map.addLayer(layer_POLYGONTZ2400189_5);
+       bounds_group.addLayer(layer_Polygon_TZ2400189_5);
+        map.addLayer(layer_Polygon_TZ2400189_5);
         var baseMaps = {};
-        var overlaysTree = [
-            {label: '<img src="legend/POLYGONTZ2400189_5.png" /> POLYGON TZ2400189', layer: layer_POLYGONTZ2400189_5},
-            {label: '<img src="legend/NonHuntingAreas_4.png" /> Non Hunting Areas', layer: layer_NonHuntingAreas_4},
-            {label: '<img src="legend/NationalPark_3.png" /> National Park', layer: layer_NationalPark_3},
-            {label: '<img src="legend/WildlifeSanctuary_2.png" /> Wildlife Sanctuary', layer: layer_WildlifeSanctuary_2},
-            {label: "Global forest cover 2020", layer: layer_Globalforestcover2020_1},
-            {label: "google map", layer: layer_googlemap_0},]
-        var lay = L.control.layers.tree(null, overlaysTree,{
-            //namedToggle: true,
-            //selectorBack: false,
-            //closedSymbol: '&#8862; &#x1f5c0;',
-            //openedSymbol: '&#8863; &#x1f5c1;',
-            //collapseAll: 'Collapse all',
-            //expandAll: 'Expand all',
-            collapsed: true,
-        });
-        lay.addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Polygon_TZ2400189_5.png" /> Polygon_TZ2400162': layer_Polygon_TZ2400189_5,'<img src="legend/NonHuntingAreas_4.png" /> Non Hunting Areas': layer_NonHuntingAreas_4,'<img src="legend/NationalPark_3.png" /> National Park': layer_NationalPark_3,'<img src="legend/WildlifeSanctuary_2.png" /> Wildlife Sanctuary': layer_WildlifeSanctuary_2,"Global forest cover 2020": layer_Globalforestcover2020_1,"google map": layer_googlemap_0,}).addTo(map);
         setBounds();
         </script>
     </body>
